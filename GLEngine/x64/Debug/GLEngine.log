@@ -1,4 +1,9 @@
-﻿  main.cpp
-c:\users\messier\source\repos\glengine\glengine\defines.h(4): warning C4005: 'EXIT_FAILURE': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.18362.0\ucrt\stdlib.h(49): note: see previous definition of 'EXIT_FAILURE'
-  GLEngine.vcxproj -> C:\Users\Messier\source\repos\GLEngine\x64\Debug\GLEngine.exe
+﻿  Display.cpp
+c:\users\messier\source\repos\oceanus\glengine\defines.h(4): warning C4005: 'EXIT_FAILURE': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdlib.h(49): note: see previous definition of 'EXIT_FAILURE'
+  main.cpp
+c:\users\messier\source\repos\oceanus\glengine\defines.h(4): warning C4005: 'EXIT_FAILURE': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdlib.h(49): note: see previous definition of 'EXIT_FAILURE'
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  GLEngine.vcxproj -> C:\Users\Messier\source\repos\Oceanus\x64\Debug\GLEngine.exe
