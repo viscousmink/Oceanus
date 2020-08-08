@@ -18,6 +18,8 @@ bool Display::makeWindow()
 
 	glfwMakeContextCurrent(window);
 
+	glewInit();
+
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
 	return true;

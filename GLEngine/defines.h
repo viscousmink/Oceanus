@@ -1,7 +1,6 @@
 #pragma once
 
 #define EXIT_SUCCESS 0
-#define EXIT_FAILURE -1
 #define EXIT EXIT_SUCCESS
 
 #define ALIASING 4
