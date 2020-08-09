@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CONTROL
+#define CONTROL
 
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
@@ -82,3 +83,5 @@ private:
 	float speed = 3.0f;
 	float mouseSpeed = 0.005f;
 };
+
+#endif

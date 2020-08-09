@@ -145,8 +145,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Display.cpp" />
+    <ClCompile Include="loader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="shaders.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controls.h" />
@@ -154,6 +157,7 @@
     <ClInclude Include="Display.h" />
     <ClInclude Include="loader.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="shaders.h" />
   </ItemGroup>
   <ItemGroup>
