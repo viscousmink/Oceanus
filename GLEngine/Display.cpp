@@ -27,5 +27,12 @@ bool Display::makeWindow()
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+	glfwPollEvents();
+	glfwSetCursorPos(window, 800 / 2, 600 / 2);
+
+	glEnable(GL_CULL_FACE);
+
 	return true;
 }

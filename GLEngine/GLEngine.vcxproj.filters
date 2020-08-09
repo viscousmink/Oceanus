@@ -38,5 +38,8 @@
     <ClInclude Include="loader.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="controls.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
