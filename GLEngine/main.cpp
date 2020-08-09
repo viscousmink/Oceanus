@@ -21,8 +21,9 @@ int main()
 
 	display.makeWindow();
 
-	std::vector<Object> objects;
+	//std::vector<Object> objects;
 
+	GLuint vaoID;
 	glGenVertexArrays(1, &vaoID);
 	glBindVertexArray(vaoID);
 

@@ -146,12 +146,14 @@
   <ItemGroup>
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Object.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controls.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="loader.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="shaders.h" />
   </ItemGroup>
   <ItemGroup>
