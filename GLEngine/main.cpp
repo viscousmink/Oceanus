@@ -9,6 +9,7 @@
 #include "shaders.h"
 #include "loader.h"
 #include "controls.h"
+#include "Object.h"
 
 int main()
 {
@@ -20,7 +21,8 @@ int main()
 
 	display.makeWindow();
 
-	GLuint vaoID;
+	std::vector<Object> objects;
+
 	glGenVertexArrays(1, &vaoID);
 	glBindVertexArray(vaoID);
 

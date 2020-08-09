@@ -16,6 +16,9 @@
     <Filter Include="Common">
       <UniqueIdentifier>{c5dec4ea-7edd-4b91-9929-809b3fab6241}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{9d9bb455-568e-4408-8791-f2233f6a0fd8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -41,5 +44,13 @@
     <ClInclude Include="controls.h">
       <Filter>Common</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Shaders\Fragment.txt">
+      <Filter>Shaders</Filter>
+    </Text>
+    <Text Include="Shaders\Vertex.txt">
+      <Filter>Shaders</Filter>
+    </Text>
   </ItemGroup>
 </Project>
