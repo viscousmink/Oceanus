@@ -35,5 +35,8 @@
     <ClInclude Include="shaders.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="loader.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
