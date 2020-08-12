@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
+#include "Object.h"
 
 class Controls
 {
@@ -16,6 +17,27 @@ public:
 
 	glm::mat4 getViewMatrix() { return ViewMatrix; }
 	glm::mat4 getProjectionMatrix() { return ProjectionMatrix; }
+
+	void move(Object & obj, GLFWwindow* window)
+	{
+		// Move forward
+		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+			obj.translateModelMatrix(0.0, 0.01, 0.0);
+		}
+		// Move backward
+		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+			obj.translateModelMatrix(0.0, -0.01, 0.0);
+		}
+		// Strafe right
+		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+			obj.translateModelMatrix(0.01, 0.0, 0.0);
+		}
+		// Strafe left
+		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+			obj.translateModelMatrix(-0.01, 0.0, 0.0);
+		}
+	}
+
 	void computeMatricesFromInputs(GLFWwindow* window)
 	{
 		static double lastTime = glfwGetTime();

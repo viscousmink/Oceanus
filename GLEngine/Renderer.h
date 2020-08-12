@@ -7,7 +7,9 @@
 class Renderer
 {
 public:
-	void render(Object obj, glm::mat4, glm::mat4);
+	void render(Object obj, glm::mat4, glm::mat4, Object light);
+private:
+	void bindVao(Object obj);
 };
 
 #endif

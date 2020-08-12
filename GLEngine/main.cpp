@@ -26,10 +26,15 @@ int main()
 
 	std::vector<Object> objects;
 	Object ob;
+	Object Cube;
 
 	ob.genVao();
 	ob.init("Models/suzanne.obj", "Textures/uvmap.DDS");
 
+	Cube.genVao();
+	Cube.init("Models/cube.obj", "Textures/uvmap1.DDS");
+
+	objects.push_back(Cube);
 	objects.push_back(ob);
 
 	while (!glfwWindowShouldClose(display.window) && glfwGetKey(display.window, GLFW_KEY_ESCAPE) != GLFW_PRESS)
@@ -37,12 +42,13 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		controls.computeMatricesFromInputs(display.window);
+		controls.move(objects[0], display.window);
 		glm::mat4 View = controls.getViewMatrix();
 		glm::mat4 Projection = controls.getProjectionMatrix();
 
 		for (int i = 0; i < objects.size(); i++)
 		{
-			renderer.render(objects[i], Projection, View);
+			renderer.render(objects[i], Projection, View, objects[0]);
 		}
 
 		glfwSwapBuffers(display.window);

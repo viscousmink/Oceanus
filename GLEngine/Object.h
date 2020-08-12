@@ -13,6 +13,7 @@ class Object
 {
 public:
 	glm::mat4 getModelMatrix();
+	glm::vec3 getPosition();
 	void translateModelMatrix(float x, float y, float z);
 	void genVao();
 	void init(const char* objPath, const char* textPath);
@@ -23,6 +24,7 @@ public:
 	void bindBuffers();
 	GLuint getVerticesSize();
 	GLuint getIndicesSize();
+	GLuint getVaoID();
 	void vboIndex(std::vector<glm::vec3>& tempvert, std::vector<glm::vec2>& tempuv, std::vector<glm::vec3>& tempnorm);
 
 private:

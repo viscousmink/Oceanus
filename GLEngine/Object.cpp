@@ -5,6 +5,11 @@ glm::mat4 Object::getModelMatrix()
 	return Model;
 }
 
+glm::vec3 Object::getPosition()
+{
+	return glm::vec3(Model[3][0], Model[3][1], Model[3][2]);
+}
+
 void Object::translateModelMatrix(float x, float y, float z)
 {
 	Model[3][0] += x;
@@ -97,6 +102,11 @@ GLuint Object::getVerticesSize()
 GLuint Object::getIndicesSize()
 {
 	return indices.size();
+}
+
+GLuint Object::getVaoID()
+{
+	return vaoID;
 }
 
 bool is_near(float v1, float v2)
