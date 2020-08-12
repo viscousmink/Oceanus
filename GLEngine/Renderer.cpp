@@ -9,7 +9,8 @@ void Renderer::render(Object obj, glm::mat4 Project, glm::mat4 View)
 	glBindTexture(GL_TEXTURE_2D, obj.getTexture());
 	glUniform1i(obj.getTextureID(), 0);
 	obj.bindBuffers();
-	glDrawArrays(GL_TRIANGLES, 0, obj.getVerticesSize());
+	glDrawElements(GL_TRIANGLES, obj.getIndicesSize(), GL_UNSIGNED_SHORT, (void*)0);
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
+	glDisableVertexAttribArray(2);
 }

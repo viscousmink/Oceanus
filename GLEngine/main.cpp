@@ -28,7 +28,7 @@ int main()
 	Object ob;
 
 	ob.genVao();
-	ob.init("Models/cube.obj", "Textures/uvmap.DDS");
+	ob.init("Models/suzanne.obj", "Textures/uvmap.DDS");
 
 	objects.push_back(ob);
 

@@ -22,6 +22,8 @@ public:
 	GLuint getTexture();
 	void bindBuffers();
 	GLuint getVerticesSize();
+	GLuint getIndicesSize();
+	void vboIndex(std::vector<glm::vec3>& tempvert, std::vector<glm::vec2>& tempuv, std::vector<glm::vec3>& tempnorm);
 
 private:
 	glm::mat4 Model;
@@ -31,10 +33,13 @@ private:
 	GLuint Texture;
 	GLuint TextureID;
 	GLuint vertexBuffer;
+	GLuint elementbuffer;
 	GLuint uvbuffer;
+	GLuint normbuffer;
 	std::vector<glm::vec3> vertices;
 	std::vector<glm::vec2> uvs;
 	std::vector<glm::vec3> normals;
+	std::vector<unsigned short> indices;
 };
 
 #endif

@@ -150,7 +150,7 @@ GLuint loadDDS(const char* imagepath) {
 	return textureID;
 }
 
-bool loadObj(const char* objectPath, std::vector<glm::vec3>& out_vert, std::vector<glm::vec2>& out_uv, std::vector<glm::vec3> out_norm)
+bool loadObj(const char* objectPath, std::vector<glm::vec3>& out_vert, std::vector<glm::vec2>& out_uv, std::vector<glm::vec3>& out_norm)
 {
 	printf("Loading OBJ file %s...\n", objectPath);
 
