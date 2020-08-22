@@ -29,12 +29,12 @@ int main()
 	Object Cube;
 
 	ob.genVao();
-	ob.init("Models/suzanne.obj", "Textures/uvmap.DDS");
+	ob.init("Models/suzanne.obj", "Textures/uvmap.DDS", "normal.bmp", "diffuse.DDS", "specular.DDS");
 
-	Cube.genVao();
-	Cube.init("Models/cube.obj", "Textures/uvmap1.DDS");
+	//Cube.genVao();
+	//Cube.init("Models/cube.obj", "Textures/uvmap1.DDS");
 
-	objects.push_back(Cube);
+	//objects.push_back(Cube);
 	objects.push_back(ob);
 
 	while (!glfwWindowShouldClose(display.window) && glfwGetKey(display.window, GLFW_KEY_ESCAPE) != GLFW_PRESS)

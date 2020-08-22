@@ -1,11 +1,4 @@
 ﻿  Object.cpp
-c:\users\mitch\source\repos\oceanus\glengine\object.cpp(99): warning C4267: 'return': conversion from 'size_t' to 'GLuint', possible loss of data
-c:\users\mitch\source\repos\oceanus\glengine\object.cpp(104): warning C4267: 'return': conversion from 'size_t' to 'GLuint', possible loss of data
-  Renderer.cpp
-  main.cpp
-c:\users\mitch\source\repos\oceanus\glengine\controls.h(25): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\mitch\source\repos\oceanus\glengine\controls.h(29): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\mitch\source\repos\oceanus\glengine\controls.h(33): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\mitch\source\repos\oceanus\glengine\controls.h(37): warning C4305: 'argument': truncation from 'double' to 'float'
-  Generating Code...
+c:\users\mitch\source\repos\oceanus\glengine\object.cpp(121): warning C4267: 'return': conversion from 'size_t' to 'GLuint', possible loss of data
+c:\users\mitch\source\repos\oceanus\glengine\object.cpp(126): warning C4267: 'return': conversion from 'size_t' to 'GLuint', possible loss of data
   GLEngine.vcxproj -> C:\Users\mitch\source\repos\Oceanus\\GLEngine\GLEngine.exe

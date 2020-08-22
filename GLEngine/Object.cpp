@@ -23,21 +23,28 @@ void Object::genVao()
 	glBindVertexArray(vaoID);
 }
 
-void Object::init(const char* obj, const char* text)
+void Object::init(const char* obj, const char* text, const char* normText, const char* diffText, const char* specText)
 {
 	Model = glm::mat4(1.0);
 
 	std::vector<glm::vec3> tempvert;
 	std::vector<glm::vec2> tempuv;
 	std::vector<glm::vec3> tempnorm;
+	std::vector<glm::vec3> temptan;
+	std::vector<glm::vec3> tempbitan;
 
 	bool result = loadObj(obj, tempvert, tempuv, tempnorm);
 	ProgramID = LoadShaders("Shaders/Vertex.txt", "Shaders/Fragment.txt");
 	MatrixID = glGetUniformLocation(ProgramID, "MVP");
 	Texture = loadDDS(text);
 	TextureID = glGetUniformLocation(ProgramID, "myTextureSampler");
+	DiffuseTextureID = glGetUniformLocation(ProgramID, "DiffuseTextureSampler");
+	NormalTextureID = glGetUniformLocation(ProgramID, "NormalTextureSampler");
+	SpecularTextureID = glGetUniformLocation(ProgramID, "SpecularTextureSampler");
 
-	vboIndex(tempvert, tempuv, tempnorm);
+	computeTangentBasis(tempvert, tempuv, tempnorm, temptan, tempbitan);
+
+	vboIndex(tempvert, tempuv, tempnorm, temptan, tempbitan);
 
 	glGenBuffers(1, &vertexBuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
@@ -51,7 +58,14 @@ void Object::init(const char* obj, const char* text)
 	glBindBuffer(GL_ARRAY_BUFFER, normbuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * normals.size(), &normals[0], GL_STATIC_DRAW);
 
-	
+	glGenBuffers(1, &tangentbuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, tangentbuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * tangents.size(), &tangents[0], GL_STATIC_DRAW);
+
+	glGenBuffers(1, &bitangentbuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, bitangentbuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * bitangents.size(), &bitangents[0], GL_STATIC_DRAW);
+
 	glGenBuffers(1, &elementbuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned short), &indices[0], GL_STATIC_DRAW);
@@ -90,6 +104,14 @@ void Object::bindBuffers()
 	glEnableVertexAttribArray(2);
 	glBindBuffer(GL_ARRAY_BUFFER, normbuffer);
 	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+
+	glEnableVertexAttribArray(3);
+	glBindBuffer(GL_ARRAY_BUFFER, tangentbuffer);
+	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+
+	glEnableVertexAttribArray(4);
+	glBindBuffer(GL_ARRAY_BUFFER, bitangentbuffer);
+	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
 }
@@ -141,7 +163,7 @@ bool getSimilarVertexIndex(
 	return false;
 }
 
-void Object::vboIndex(std::vector<glm::vec3>& tempvert, std::vector<glm::vec2>& tempuv, std::vector<glm::vec3>& tempnorm)
+void Object::vboIndex(std::vector<glm::vec3>& tempvert, std::vector<glm::vec2>& tempuv, std::vector<glm::vec3>& tempnorm, std::vector<glm::vec3>& temptan, std::vector<glm::vec3>& tempbitan)
 {
 	for (unsigned int i = 0; i < tempvert.size(); i++) {
 
@@ -155,8 +177,67 @@ void Object::vboIndex(std::vector<glm::vec3>& tempvert, std::vector<glm::vec2>& 
 			vertices.push_back(tempvert[i]);
 			uvs.push_back(tempuv[i]);
 			normals.push_back(tempnorm[i]);
+			tangents.push_back(temptan[i]);
+			bitangents.push_back(tempbitan[i]);
 			indices.push_back((unsigned short)vertices.size() - 1);
 		}
+	}
+}
+
+void Object::computeTangentBasis(std::vector<glm::vec3>& vertices, std::vector<glm::vec2>& uvs, std::vector<glm::vec3>& normals, std::vector<glm::vec3>& tangents, std::vector<glm::vec3>& bitangents)
+{
+	for (unsigned int i = 0; i < vertices.size(); i += 3) {
+
+		// Shortcuts for vertices
+		glm::vec3& v0 = vertices[i + 0];
+		glm::vec3& v1 = vertices[i + 1];
+		glm::vec3& v2 = vertices[i + 2];
+
+		// Shortcuts for UVs
+		glm::vec2& uv0 = uvs[i + 0];
+		glm::vec2& uv1 = uvs[i + 1];
+		glm::vec2& uv2 = uvs[i + 2];
+
+		// Edges of the triangle : postion delta
+		glm::vec3 deltaPos1 = v1 - v0;
+		glm::vec3 deltaPos2 = v2 - v0;
+
+		// UV delta
+		glm::vec2 deltaUV1 = uv1 - uv0;
+		glm::vec2 deltaUV2 = uv2 - uv0;
+
+		float r = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV1.y * deltaUV2.x);
+		glm::vec3 tangent = (deltaPos1 * deltaUV2.y - deltaPos2 * deltaUV1.y) * r;
+		glm::vec3 bitangent = (deltaPos2 * deltaUV1.x - deltaPos1 * deltaUV2.x) * r;
+
+		// Set the same tangent for all three vertices of the triangle.
+		// They will be merged later, in vboindexer.cpp
+		tangents.push_back(tangent);
+		tangents.push_back(tangent);
+		tangents.push_back(tangent);
+
+		// Same thing for binormals
+		bitangents.push_back(bitangent);
+		bitangents.push_back(bitangent);
+		bitangents.push_back(bitangent);
+
+	}
+
+	// See "Going Further"
+	for (unsigned int i = 0; i < vertices.size(); i += 1)
+	{
+		glm::vec3& n = normals[i];
+		glm::vec3& t = tangents[i];
+		glm::vec3& b = bitangents[i];
+
+		// Gram-Schmidt orthogonalize
+		t = glm::normalize(t - n * glm::dot(n, t));
+
+		// Calculate handedness
+		if (glm::dot(glm::cross(n, t), b) < 0.0f) {
+			t = t * -1.0f;
+		}
+
 	}
 }
 
