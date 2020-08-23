@@ -12,6 +12,7 @@
 #include "controls.h"
 #include "Object.h"
 #include "Renderer.h"
+#include "terrain.h"
 
 int main()
 {
@@ -37,6 +38,9 @@ int main()
 	//objects.push_back(Cube);
 	objects.push_back(ob);
 
+	terrain terr;
+	terr.init("Shaders/VertexTerrain.txt", "Shaders/FragmentTerrain.txt");
+
 	while (!glfwWindowShouldClose(display.window) && glfwGetKey(display.window, GLFW_KEY_ESCAPE) != GLFW_PRESS)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -46,6 +50,10 @@ int main()
 		glm::mat4 View = controls.getViewMatrix();
 		glm::mat4 Projection = controls.getProjectionMatrix();
 
+		// Terrain
+		renderer.renderTerrain(terr, Projection, View);
+
+		// Objects
 		for (int i = 0; i < objects.size(); i++)
 		{
 			renderer.render(objects[i], Projection, View, objects[0]);

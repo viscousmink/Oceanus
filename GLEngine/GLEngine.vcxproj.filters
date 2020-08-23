@@ -39,6 +39,9 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="terrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defines.h">
@@ -62,12 +65,21 @@
     <ClInclude Include="Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="terrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Shaders\Fragment.txt">
       <Filter>Shaders</Filter>
     </Text>
     <Text Include="Shaders\Vertex.txt">
+      <Filter>Shaders</Filter>
+    </Text>
+    <Text Include="Shaders\FragmentTerrain.txt">
+      <Filter>Shaders</Filter>
+    </Text>
+    <Text Include="Shaders\VertexTerrain.txt">
       <Filter>Shaders</Filter>
     </Text>
   </ItemGroup>

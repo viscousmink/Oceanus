@@ -26,7 +26,24 @@ void Renderer::render(Object obj, glm::mat4 Project, glm::mat4 View, Object ligh
 	glBindVertexArray(0);
 }
 
+void Renderer::renderTerrain(terrain terr, glm::mat4 Project, glm::mat4 View)
+{
+	bindVaoTerrain(terr);
+	glUseProgram(terr.getProgramID());
+	glm::mat4 MVP = Project * View * glm::mat4(1.0);
+	terr.bindBuffers();
+	glUniformMatrix4fv(terr.getMatrixID(), 1, GL_FALSE, &MVP[0][0]);
+	glDrawArrays(GL_TRIANGLES, 0, terr.getVertexSize() * 3);
+	glDisableVertexAttribArray(0);
+	glBindVertexArray(0);
+}
+
 void Renderer::bindVao(Object obj)
 {
 	glBindVertexArray(obj.getVaoID());
+}
+
+void Renderer::bindVaoTerrain(terrain terr)
+{
+	glBindVertexArray(terr.getVaoID());
 }
