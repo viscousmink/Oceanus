@@ -152,6 +152,7 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="shaders.cpp" />
     <ClCompile Include="terrain.cpp" />
+    <ClCompile Include="Water.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controls.h" />
@@ -163,12 +164,15 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="shaders.h" />
     <ClInclude Include="terrain.h" />
+    <ClInclude Include="Water.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Shaders\Fragment.txt" />
     <Text Include="Shaders\FragmentTerrain.txt" />
+    <Text Include="Shaders\FragmentWater.txt" />
     <Text Include="Shaders\Vertex.txt" />
     <Text Include="Shaders\VertexTerrain.txt" />
+    <Text Include="Shaders\VertexWater.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

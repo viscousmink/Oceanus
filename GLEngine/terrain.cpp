@@ -30,11 +30,6 @@ GLuint terrain::getVertexSize()
     return vertices.size();
 }
 
-GLuint terrain::getVaoID()
-{
-    return vaoID;
-}
-
 GLuint terrain::getMatrixID()
 {
     return MatrixID;

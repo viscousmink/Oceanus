@@ -38,6 +38,19 @@ void Renderer::renderTerrain(terrain terr, glm::mat4 Project, glm::mat4 View)
 	glBindVertexArray(0);
 }
 
+void Renderer::renderWater(Water water, glm::mat4 Project, glm::mat4 View)
+{
+	bindVaoWater(water);
+	glUseProgram(water.getProgramID());
+	glm::mat4 MVP = Project * View * glm::mat4(1.0);
+	water.bindBuffers();
+	glUniformMatrix4fv(water.getMatrixID(), 1, GL_FALSE, &MVP[0][0]);
+	glUniform1f(water.gettID(), water.t);
+	glDrawArrays(GL_TRIANGLES, 0, water.getVertexSize() * 3);
+	glDisableVertexAttribArray(0);
+	glBindVertexArray(0);
+}
+
 void Renderer::bindVao(Object obj)
 {
 	glBindVertexArray(obj.getVaoID());
@@ -46,4 +59,9 @@ void Renderer::bindVao(Object obj)
 void Renderer::bindVaoTerrain(terrain terr)
 {
 	glBindVertexArray(terr.getVaoID());
+}
+
+void Renderer::bindVaoWater(Water water)
+{
+	glBindVertexArray(water.getVaoID());
 }

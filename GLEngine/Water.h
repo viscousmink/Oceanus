@@ -1,37 +1,34 @@
 #pragma once
-#include <cstdint>
+
 #define GLEW_STATIC
 #include <GL/glew.h>
-
-#include "Renderable.h"
 #include <glm/glm.hpp>
-#include <vector>
-#include "shaders.h"
+
 #include "loader.h"
+#include "shaders.h"
+#include "Renderable.h"
 #include <cmath>
 #include <ctime>
+#include <cstdint>
+#include <vector>
 
-class terrain: public Renderable
+class Water : public Renderable
 {
 public:
 	void init(const char* vert, const char* frag);
-	GLuint getProgramID();
 	void bindBuffers();
+	GLuint getProgramID();
 	GLuint getVertexSize();
 	GLuint getMatrixID();
-	
+	GLuint gettID();
+	float t;
 private:
-	const uint16_t SIZE = 800;
+	void genWater();
 	const uint16_t VERTEX_COUNT = 128;
-	float x;
-	float z;
 	std::vector<glm::vec3> vertices;
-	std::vector<glm::vec3> normals;
-	std::vector<glm::vec3> uvs;
 	GLuint ProgramID;
-	GLuint vertexBuffer;
-	void genVAO();
 	GLuint MatrixID;
-	void genTerrain();
+	GLuint vertexBuffer;
+	GLuint tID;
 };
 

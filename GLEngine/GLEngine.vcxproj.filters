@@ -45,6 +45,9 @@
     <ClCompile Include="Renderable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Water.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defines.h">
@@ -74,6 +77,9 @@
     <ClInclude Include="Renderable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Water.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Shaders\Fragment.txt">
@@ -86,6 +92,12 @@
       <Filter>Shaders</Filter>
     </Text>
     <Text Include="Shaders\VertexTerrain.txt">
+      <Filter>Shaders</Filter>
+    </Text>
+    <Text Include="Shaders\FragmentWater.txt">
+      <Filter>Shaders</Filter>
+    </Text>
+    <Text Include="Shaders\VertexWater.txt">
       <Filter>Shaders</Filter>
     </Text>
   </ItemGroup>

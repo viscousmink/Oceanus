@@ -22,7 +22,7 @@ bool Display::makeWindow()
 
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
-	glClearColor(0,0,1,0);
+	glClearColor(0,0,0,0);
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
