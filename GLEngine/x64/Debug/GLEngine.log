@@ -1,4 +1,11 @@
-﻿  terrain.cpp
+﻿  Renderer.cpp
+  main.cpp
+c:\users\mitch\source\repos\oceanus\glengine\controls.h(25): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\mitch\source\repos\oceanus\glengine\controls.h(29): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\mitch\source\repos\oceanus\glengine\controls.h(33): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\mitch\source\repos\oceanus\glengine\controls.h(37): warning C4305: 'argument': truncation from 'double' to 'float'
+  terrain.cpp
 c:\users\mitch\source\repos\oceanus\glengine\terrain.cpp(30): warning C4267: 'return': conversion from 'size_t' to 'GLuint', possible loss of data
 c:\users\mitch\source\repos\oceanus\glengine\terrain.cpp(52): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
   GLEngine.vcxproj -> C:\Users\mitch\source\repos\Oceanus\\GLEngine\GLEngine.exe

@@ -17,12 +17,6 @@ void Object::translateModelMatrix(float x, float y, float z)
 	Model[3][2] += z;
 }
 
-void Object::genVao()
-{
-	glGenVertexArrays(1, &vaoID);
-	glBindVertexArray(vaoID);
-}
-
 void Object::init(const char* obj, const char* text, const char* normText, const char* diffText, const char* specText)
 {
 	Model = glm::mat4(1.0);

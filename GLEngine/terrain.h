@@ -3,6 +3,7 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 
+#include "Renderable.h"
 #include <glm/glm.hpp>
 #include <vector>
 #include "shaders.h"
@@ -10,7 +11,7 @@
 #include <cmath>
 #include <ctime>
 
-class terrain
+class terrain: public Renderable
 {
 public:
 	void init(const char* vert, const char* frag);
@@ -31,7 +32,6 @@ private:
 	GLuint ProgramID;
 	GLuint vertexBuffer;
 	void genVAO();
-	GLuint vaoID;
 	GLuint MatrixID;
 	void genTerrain();
 };

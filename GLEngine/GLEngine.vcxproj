@@ -148,6 +148,7 @@
     <ClCompile Include="loader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Renderable.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="shaders.cpp" />
     <ClCompile Include="terrain.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Display.h" />
     <ClInclude Include="loader.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Renderable.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="shaders.h" />
     <ClInclude Include="terrain.h" />

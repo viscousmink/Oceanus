@@ -4,18 +4,18 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 
+#include "Renderable.h"
 #include <glm/glm.hpp>
 #include <vector>
 #include "shaders.h"
 #include "loader.h"
 
-class Object
+class Object: public Renderable
 {
 public:
 	glm::mat4 getModelMatrix();
 	glm::vec3 getPosition();
 	void translateModelMatrix(float x, float y, float z);
-	void genVao();
 	void init(const char* objPath, const char* textPath, const char* normText, const char* diffText, const char* specText);
 	GLuint getProgramID();
 	GLuint getMatrixID();
@@ -24,12 +24,11 @@ public:
 	void bindBuffers();
 	GLuint getVerticesSize();
 	GLuint getIndicesSize();
-	GLuint getVaoID();
 	void vboIndex(std::vector<glm::vec3>& tempvert, std::vector<glm::vec2>& tempuv, std::vector<glm::vec3>& tempnorm, std::vector<glm::vec3>& temptan, std::vector<glm::vec3>& tempbitan);
+	GLuint getVaoID();
 
 private:
 	glm::mat4 Model;
-	GLuint vaoID;
 	GLuint ProgramID;
 	GLuint MatrixID;
 	GLuint DiffuseTextureID;
